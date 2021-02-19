@@ -1,0 +1,80 @@
+<div class="main-container">
+
+  <!--  -->
+  <div class="form-container">
+    <form [formGroup]="userProfileForm" (ngSubmit)="addData()"> 
+      <!-- Name -->
+      <div class="form-group">
+        <div class="label-sec"><b>Name</b></div>
+        <div class="">
+          <input type="text" name="name" id="name"  formControlName='name'>
+        </div>
+      </div>
+      <!--Age  -->
+      <div class="form-group">
+        <div class="label-sec"><b>Age</b></div>
+        <div class=""> <input type="number" name="age" id="age" formControlName='age'></div>
+      </div>
+      <!-- Gender -->
+      <div class="form-group">
+        <div class="label-sec"><b>Gender</b></div>
+        <div class="">
+          <span>Male</span><input type="radio" name="gender" id="male" value="Male" formControlName='gender'>
+        <span>female</span><input type="radio" name="gender" id="female" value="Female" formControlName='gender'>
+        </div>
+      </div>
+      <!-- hobbies -->
+      <div class="form-group">
+        <div class="label-sec">
+          <b>Hobbies</b>
+        </div>
+        <!-- <div class="">
+          <input type="text" id="hobbies" name="hobbies" formControlName='hobbies'>        
+        </div> -->
+        <div class="">
+          <input type="text" id="hobbie" name="hobbie" formControlName='hobbie'>
+          <span (click)="addHobie()" style="border: 1px solid grey;cursor: pointer; 
+          padding: 2px 5px; margin-left: 10px;margin-bottom: 5px; display: inline-block;">+</span>
+        </div>
+        <div *ngFor="let hobie of hobbies; let i = index">
+          <input type="text" id="test" name="test" formControlName='{{hobie}}'>
+          <span (click)="removeHobie(hobie)" style="border: 1px solid grey;cursor: pointer; 
+          padding: 2px 5px; margin-left: 10px;margin-bottom: 5px; display: inline-block;">-</span>
+        </div>
+      </div>
+      
+
+      <!-- Verified -->
+      <div class="form-group">
+        <input type="checkbox" id="Verified" name="Verified" formControlName='Verified'>
+        <span>All the information are verified</span>
+      </div>
+      <!-- Action -->
+      <div class="form-group">
+        <button class="add-sec" type="submit" style="border: 1px solid grey;padding: 5px;background-color:#fff;" >Add</button>
+        <button class="reset-btn" type="button"style="border: 1px solid grey;padding: 5px;background-color:#fff;" (click)="resetForm()" >Reset</button>
+      </div>
+    </form>
+  </div>
+  <!--  -->
+  <div class="table-data-container">
+    <input type="text" placeholder="Search By Name" [(ngModel)]="searchName" (change)="filterByName(searchName)" name="searchName">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Hobbies</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor= "let userInfo of userData">
+        <td>{{userInfo.name}}</td>
+        <td>{{userInfo.age}}</td>
+        <td>{{userInfo.gender}}</td>
+        <td>{{userInfo.hobbie}}</td>
+        <td><button class="delete-btn" (click)="deleteUserData(userInfo)">Delete</button></td>
+
+      </tr>
+    </table>
+  </div>
+</div>

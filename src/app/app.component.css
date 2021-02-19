@@ -1,0 +1,35 @@
+.main-container {
+    display:  flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid grey;
+}
+.form-container{
+    width: 30%;
+    border: 1px solid grey;
+    padding: 20px;
+}
+.table-data-container{
+    width: 70%;
+    margin-left: 20px;
+    border: 1px solid grey;
+    padding: 20px;
+}
+.main-container .form-group {
+    margin-bottom: 20px;
+}
+.label-sec {
+    margin-bottom: 10px; 
+}
+.main-container table {
+    width: 100%;
+}
+.main-container table, th, td {
+    border: 1px solid grey;
+    border-collapse:  collapse;
+}
+.main-container th, td {
+    padding:  15PX;
+    text-align: left;
+}
+
